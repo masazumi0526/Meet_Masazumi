@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ESNext", // 最新のJavaScript（ESNext）をターゲットにする
+    "module": "ESNext", // ESNextモジュールシステムを使用
+    "lib": ["ESNext", "DOM"], // ESNext + DOM の型情報を利用
+    "jsx": "react-jsx", // Reactの最新のJSX変換を使用（React 17+）
+    "moduleResolution": "node", // Node.js のモジュール解決方法を採用
+
+    // ✅ 厳格な型チェックを有効化（any 型を禁止）
+    "strict": true, // 厳格モード（以下の設定をすべて含む）
+    "noImplicitAny": true, // 暗黙の any 型を禁止
+    "noImplicitThis": true, // 暗黙の this の any 型を禁止
+    "strictNullChecks": true, // null/undefined の厳密な型チェック
+    "strictFunctionTypes": true, // 関数の型チェックを厳密にする
+    "strictPropertyInitialization": true, // クラスのプロパティを未初期化のままにしない
+
+    // ✅ TypeScript の動作を最適化
+    "forceConsistentCasingInFileNames": true, // ファイル名の大文字/小文字の違いをエラーにする
+    "skipLibCheck": true, // node_modules の型チェックをスキップ（ビルドを高速化）
+    "esModuleInterop": true, // ES6 の import/export の互換性を向上
+    "allowSyntheticDefaultImports": true, // デフォルト import のエミュレーションを許可
+    "resolveJsonModule": true, // JSONファイルを import できるようにする
+    "isolatedModules": true // Vite の esbuild に対応（必須）
+  },
+  
+  "include": ["src"], // TypeScript に src/ フォルダ内のファイルのみを対象にする
+  "exclude": ["node_modules", "dist"] // node_modules と dist フォルダを解析対象から除外
+}
