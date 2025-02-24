@@ -11,7 +11,7 @@
     "deploy": "gh-pages -d dist",
     "server:build": "webpack --config webpack.server.js",
     "server:start": "node dist/server.js",
-    "server:dev": "nodemon --watch server --exec babel-node server/index.js"
+    "server:dev": "nodemon --watch server --exec npx babel-node server/index.js"
   },
   "dependencies": {
     "@types/express": "^5.0.0",
