@@ -23,6 +23,6 @@
     "isolatedModules": true // Vite の esbuild に対応（必須）
   },
   
-  "include": ["src"], // TypeScript に src/ フォルダ内のファイルのみを対象にする
+  "include": ["src", "server"], // TypeScript に src/ フォルダ内のファイルのみを対象にする
   "exclude": ["node_modules", "dist"] // node_modules と dist フォルダを解析対象から除外
 }
