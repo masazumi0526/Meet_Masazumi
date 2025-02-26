@@ -7,7 +7,7 @@ export default {
   externals: [nodeExternals()], // node_modules をバンドルしない
   output: {
     path: path.resolve('dist'),
-    filename: 'server.js',
+    filename: 'server.cjs',
     libraryTarget: 'module', // 出力を ES Module にする
   },
   experiments: {
