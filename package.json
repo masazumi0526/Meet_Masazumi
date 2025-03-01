@@ -9,15 +9,16 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
-    "server:build": "webpack --config webpack.server.js",
-    "server:start": "node dist/server.js"
+    "server:build": "webpack --config webpack.server.cjs",
+    "server:start": "node dist/server.cjs"
   },
   "dependencies": {
     "@types/express": "^5.0.0",
+    "esbuild": "^0.25.0",
     "express": "^4.21.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "vite-plugin-ssr": "^0.4.142"
+    "vite-plugin-ssr": "^0.4.85"
   },
   "devDependencies": {
     "@babel/core": "^7.26.9",
