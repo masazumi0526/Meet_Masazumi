@@ -1,33 +1,30 @@
-const express = require('express');
-const { renderToString } = require('react-dom/server');
-const React = require('react');
-const path = require('path');
-const Page = require('../src/pages/meetme.page.js'); // SSR 用のページコンポーネント
+import express from 'express';
+import path from 'path';
+import { renderToString } from 'react-dom/server';
+import React from 'react';
+import Page from '../src/pages/meetme.page.tsx'; // SSR 用のページコンポーネント
 
 const app = express();
 
-// 静的ファイルを提供（例: CSS など）
+// 静的ファイルの提供設定を修正 (CSSを無視)
 app.use(express.static(path.resolve('dist')));
 
-// CSS ファイルも静的ファイルとして提供
-app.use('/styles', express.static(path.resolve(__dirname, '../src/styles')));
-
+// ページ表示時にCSSを読み込まない
 app.get('/', (req, res) => {
-  const html = renderToString(React.createElement(Page));
-
+  const html = renderToString(<Page />);
   res.send(`
     <!DOCTYPE html>
     <html lang="ja">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Meet MASAZUMI</title>
-      <link rel="stylesheet" href="/styles/meetmepage.module.css"> <!-- CSS ファイルのリンクを修正 -->
-    </head>
-    <body>
-      <div id="root">${html}</div>
-      <script type="module" src="/src/entry-client.tsx"></script>
-    </body>
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Meet MASAZUMI</title>
+        <!-- CSS ファイルを読み込まない -->
+      </head>
+      <body>
+        <div id="root">${html}</div>
+        <script type="module" src="/src/entry-client.tsx"></script>
+      </body>
     </html>
   `);
 });

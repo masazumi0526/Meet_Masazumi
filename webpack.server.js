@@ -11,8 +11,16 @@ export default {
     filename: 'server.cjs', // CommonJS 形式で出力
     libraryTarget: 'commonjs2', // CommonJS のエクスポート形式に統一
   },
+  resolve: {
+    extensions: ['.js', '.ts', '.tsx'], // .ts と .tsx を解決する設定
+  },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,  // .ts と .tsx ファイルを処理する
+        use: 'ts-loader',  // ts-loader を使ってトランスパイル
+        exclude: /node_modules/,
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -21,8 +29,5 @@ export default {
         },
       },
     ],
-  },
-  resolve: {
-    extensions: ['.js'], // .css は解決しない
   },
 };
