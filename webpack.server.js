@@ -4,19 +4,16 @@ import nodeExternals from 'webpack-node-externals';
 export default {
   entry: './server/index.js',
   target: 'node',
-  externals: [nodeExternals()], // node_modules をバンドルしない
+  externals: [nodeExternals()],
   output: {
     path: path.resolve('dist'),
     filename: 'server.cjs',
-    libraryTarget: 'module', // 出力を ES Module にする
-  },
-  experiments: {
-    outputModule: true, // ES Module の出力を許可
+    libraryTarget: 'commonjs2', // ES Module ではなく CommonJS に変更
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -25,6 +22,6 @@ export default {
     ],
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
 };
