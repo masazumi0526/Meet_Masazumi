@@ -24,4 +24,9 @@ export default defineConfig({
       external: ["express"], // Express をバンドルしない
     },
   },
+
+  // SSR 用の設定を追加
+  ssr: {
+    noExternal: ["react", "react-dom"], // SSR で外部モジュールとして扱わない
+  },
 });
